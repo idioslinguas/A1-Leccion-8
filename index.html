@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grammar Master - idíoslinguas</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        fun: ['Fredoka', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#035482',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .font-fun { font-family: 'Fredoka', cursive; }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .card-bounce {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .card-bounce:hover {
+            transform: translateY(-4px);
+        }
+        .glossary-card {
+            transition: all 0.2s ease-in-out;
+        }
+        .glossary-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+        }
+        .word-chip {
+            transition: all 0.15s ease-in-out;
+            user-select: none;
+        }
+        .word-chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        .word-chip:active {
+            transform: translateY(0);
+        }
+        .slot-box {
+            min-height: 70px;
+            background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
+            background-size: 16px 16px;
+        }
+        .flip-card {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-full flex flex-col antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Title with Official idíoslinguas SVG Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('dashboard')">
+                    <div class="relative w-11 h-11 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center">
+                        <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-sm">
+                            <path d="M 30,115 C 15,55 80,15 150,28 C 182,34 192,62 170,82 C 138,112 45,152 30,115 Z" fill="none" stroke="#e63946" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M 162,38 C 188,68 182,132 142,168 C 100,202 38,172 48,130" fill="none" stroke="#ffb703" stroke-width="7" stroke-linecap="round"/>
+                            <path d="M 38,138 C 58,182 122,188 162,152" fill="none" stroke="#2a9d8f" stroke-width="7" stroke-linecap="round"/>
+                            
+                            <circle cx="100" cy="95" r="50" fill="none" stroke="#0077b6" stroke-width="5"/>
+                            <ellipse cx="100" cy="95" rx="24" ry="50" fill="none" stroke="#0077b6" stroke-width="3"/>
+                            <line x1="50" y1="95" x2="150" y2="95" stroke="#0077b6" stroke-width="3"/>
+                            <line x1="60" y1="70" x2="140" y2="70" stroke="#0077b6" stroke-width="2"/>
+                            <line x1="60" y1="120" x2="140" y2="120" stroke="#0077b6" stroke-width="2"/>
+                            
+                            <rect x="110" y="58" width="22" height="14" rx="2" fill="#b71c1c"/>
+                            <path d="M 110,58 H 121 V 65 H 110 Z" fill="#0d47a1"/>
+                            <line x1="110" y1="62" x2="132" y2="62" stroke="#ffffff" stroke-width="1.5"/>
+                            <line x1="110" y1="66" x2="132" y2="66" stroke="#ffffff" stroke-width="1.5"/>
+                            <line x1="110" y1="70" x2="132" y2="70" stroke="#ffffff" stroke-width="1.5"/>
+
+                            <path d="M 70,68 A 22,22 0 1 1 95,103 L 85,113 L 88,100 A 22,22 0 0 1 70,68 Z" fill="#0077b6"/>
+                            <text x="82" y="91" font-family="'Fredoka', sans-serif" font-weight="bold" font-size="22" fill="#ffffff" text-anchor="middle">i</text>
+                            
+                            <path d="M 125,88 A 20,20 0 1 1 145,120 L 142,128 L 134,119 A 20,20 0 0 1 125,88 Z" fill="#2a9d8f"/>
+                            <text x="127" y="110" font-family="'Fredoka', sans-serif" font-weight="bold" font-size="18" fill="#ffffff" text-anchor="middle">l</text>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center text-xl sm:text-2xl font-extrabold tracking-tight text-[#16467d] leading-none font-fun">
+                            <span>idíos</span><span class="text-[#1e5899] relative">linguas<span class="absolute -top-1.5 right-12 text-emerald-500 text-xs">🍃</span></span>
+                        </div>
+                        <span class="text-[8px] sm:text-[9px] font-extrabold text-[#16467d] tracking-[0.2em] uppercase mt-0.5">
+                            • ACADEMIA DE IDIOMAS •
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs (Desktop) -->
+                <nav class="hidden xl:flex space-x-1">
+                    <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn active text-sky-600 bg-sky-50 px-3 py-2 rounded-lg text-xs font-semibold transition">
+                        <i class="fa-solid fa-house mr-1"></i> Inicio
+                    </button>
+                    <button onclick="switchTab('module1')" id="nav-module1" class="nav-btn text-slate-600 hover:text-sky-600 hover:bg-slate-100 px-3 py-2 rounded-lg text-xs font-medium transition">
+                        <i class="fa-solid fa-couch mr-1"></i> Casa & There is/are
+                    </button>
+                    <button onclick="switchTab('module2')" id="nav-module2" class="nav-btn text-slate-600 hover:text-sky-600 hover:bg-slate-100 px-3 py-2 rounded-lg text-xs font-medium transition">
+                        <i class="fa-solid fa-circle-question mr-1"></i> Wh- Words
+                    </button>
+                    <button onclick="switchTab('module3')" id="nav-module3" class="nav-btn text-slate-600 hover:text-sky-600 hover:bg-slate-100 px-3 py-2 rounded-lg text-xs font-medium transition">
+                        <i class="fa-solid fa-apple-whole mr-1"></i> Contables
+                    </button>
+                    <button onclick="switchTab('reading')" id="nav-reading" class="nav-btn text-slate-600 hover:text-sky-600 hover:bg-slate-100 px-3 py-2 rounded-lg text-xs font-medium transition">
+                        <i class="fa-solid fa-book-open-reader mr-1"></i> Lectura + Preguntas
+                    </button>
+                    <button onclick="switchTab('exercises')" id="nav-exercises" class="nav-btn text-slate-600 hover:text-sky-600 hover:bg-slate-100 px-3 py-2 rounded-lg text-xs font-medium transition">
+                        <i class="fa-solid fa-pen-to-square mr-1"></i> 50 Ejercicios Variados
+                    </button>
+                    <button onclick="switchTab('builder')" id="nav-builder" class="nav-btn text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 px-3 py-2 rounded-lg text-xs font-semibold transition relative">
+                        <i class="fa-solid fa-cubes-stacked mr-1 text-indigo-500"></i> Construir Oraciones
+                        <span class="ml-1 bg-amber-400 text-slate-900 text-[10px] font-black px-1.5 py-0.5 rounded-full">20 Ex</span>
+                    </button>
+                    <button onclick="switchTab('games')" id="nav-games" class="nav-btn text-slate-600 hover:text-sky-600 hover:bg-slate-100 px-3 py-2 rounded-lg text-xs font-medium transition">
+                        <i class="fa-solid fa-gamepad mr-1"></i> Flashcards
+                    </button>
+                    <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-btn text-slate-600 hover:text-sky-600 hover:bg-slate-100 px-3 py-2 rounded-lg text-xs font-medium transition">
+                        <i class="fa-solid fa-award mr-1"></i> Quiz Final
+                    </button>
+                </nav>
+
+                <!-- Speech Controls & Mobile Trigger -->
+                <div class="flex items-center space-x-3">
+                    <div class="hidden sm:flex items-center space-x-2 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-600">
+                        <i class="fa-solid fa-volume-high text-sky-500"></i>
+                        <span>Voz:</span>
+                        <select id="voice-speed" class="bg-transparent border-none text-slate-700 font-semibold focus:outline-none cursor-pointer">
+                            <option value="0.8">0.8x (Lento)</option>
+                            <option value="1.0" selected>1.0x (Normal)</option>
+                        </select>
+                    </div>
+
+                    <button onclick="toggleMobileMenu()" class="xl:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 border border-slate-200">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden xl:hidden border-t border-slate-200 bg-white px-4 pt-2 pb-4 space-y-1 shadow-md">
+            <button onclick="switchTab('dashboard'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">
+                <i class="fa-solid fa-house w-6 text-sky-500"></i> Inicio
+            </button>
+            <button onclick="switchTab('module1'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">
+                <i class="fa-solid fa-couch w-6 text-sky-500"></i> Casa & There is/are
+            </button>
+            <button onclick="switchTab('module2'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">
+                <i class="fa-solid fa-circle-question w-6 text-amber-500"></i> Wh- Words
+            </button>
+            <button onclick="switchTab('module3'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">
+                <i class="fa-solid fa-apple-whole w-6 text-emerald-500"></i> Contables e Incontables
+            </button>
+            <button onclick="switchTab('reading'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">
+                <i class="fa-solid fa-book-open-reader w-6 text-teal-500"></i> Lectura + 10 Preguntas
+            </button>
+            <button onclick="switchTab('exercises'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">
+                <i class="fa-solid fa-pen-to-square w-6 text-sky-500"></i> 50 Ejercicios Variados
+            </button>
+            <button onclick="switchTab('builder'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600">
+                <i class="fa-solid fa-cubes-stacked w-6 text-indigo-500"></i> Construir Oraciones (20)
+            </button>
+            <button onclick="switchTab('games'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">
+                <i class="fa-solid fa-gamepad w-6 text-purple-500"></i> Flashcards
+            </button>
+            <button onclick="switchTab('quiz'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">
+                <i class="fa-solid fa-award w-6 text-yellow-500"></i> Quiz Final
+            </button>
+        </div>
+    </header>
+
+    <!-- Global Progress Bar -->
+    <div class="bg-slate-200 h-1.5 w-full">
+        <div id="global-progress" class="bg-gradient-to-r from-sky-500 via-indigo-500 to-emerald-500 h-1.5 w-0 transition-all duration-500"></div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- DASHBOARD TAB -->
+        <section id="tab-dashboard" class="tab-content block space-y-8">
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#16467d] via-[#1e5899] to-[#0d6efd] p-8 sm:p-10 text-white shadow-xl">
+                <div class="relative z-10 max-w-2xl">
+                    <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
+                        <i class="fa-solid fa-graduation-cap text-yellow-300"></i>
+                        <span>idíoslinguas • English Grammar Master</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-fun">Aprende Gramática, Lectura y Ejercicios Interactivos A1-A2</h2>
+                    <p class="mt-3 text-sky-100 text-base sm:text-lg">
+                        Domina <strong>There is / There are</strong>, preguntas con <strong>Wh-</strong>, sustantivos <strong>contables e incontables</strong>, lecturas con comprensión y 50 ejercicios dinámicos multiformato.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <button onclick="switchTab('reading')" class="bg-teal-400 hover:bg-teal-500 text-slate-900 font-extrabold px-5 py-2.5 rounded-xl shadow-md transition flex items-center space-x-2">
+                            <i class="fa-solid fa-book-open-reader"></i>
+                            <span>NUEVO: Lectura + 10 Preguntas</span>
+                        </button>
+                        <button onclick="switchTab('exercises')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-extrabold px-5 py-2.5 rounded-xl shadow-md transition flex items-center space-x-2">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span>50 Ejercicios Variados</span>
+                        </button>
+                    </div>
+                </div>
+                <i class="fa-solid fa-house-laptop absolute -right-6 -bottom-6 text-9xl text-white/10 pointer-events-none"></i>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex items-center space-x-4 card-bounce">
+                    <div class="p-4 bg-sky-100 text-sky-600 rounded-2xl">
+                        <i class="fa-solid fa-chart-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-400 uppercase">Progreso General</p>
+                        <h3 id="dash-progress-text" class="text-2xl font-extrabold text-slate-800">0%</h3>
+                        <p class="text-xs text-slate-500">Módulos & Prácticas</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex items-center space-x-4 card-bounce">
+                    <div class="p-4 bg-teal-100 text-teal-600 rounded-2xl">
+                        <i class="fa-solid fa-circle-check text-2xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-400 uppercase">Comprensión Lectora</p>
+                        <h3 id="dash-reading-score" class="text-2xl font-extrabold text-slate-800">0 / 10</h3>
+                        <p class="text-xs text-slate-500">Preguntas de Texto</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex items-center space-x-4 card-bounce">
+                    <div class="p-4 bg-amber-100 text-amber-600 rounded-2xl">
+                        <i class="fa-solid fa-pen-to-square text-2xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-400 uppercase">50 Ejercicios</p>
+                        <h3 id="dash-exercises-score" class="text-2xl font-extrabold text-slate-800">0 / 50</h3>
+                        <p class="text-xs text-slate-500">Variedad de formatos</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex items-center space-x-4 card-bounce">
+                    <div class="p-4 bg-indigo-100 text-indigo-600 rounded-2xl">
+                        <i class="fa-solid fa-cubes-stacked text-2xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-400 uppercase">Construcción</p>
+                        <h3 id="dash-builder-score" class="text-2xl font-extrabold text-slate-800">0 / 20</h3>
+                        <p class="text-xs text-slate-500">Oraciones traducidas</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modules Overview Grid -->
+            <div>
+                <h3 class="text-xl font-bold text-slate-900 mb-4 font-fun">Módulos & Secciones idíoslinguas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                        <div>
+                            <div class="w-12 h-12 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-house font-bold"></i>
+                            </div>
+                            <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Módulo 1</span>
+                            <h4 class="text-lg font-bold text-slate-900 mt-1 font-fun">There is / There are & La Casa</h4>
+                            <p class="text-slate-600 text-sm mt-2">
+                                Describe existencia y ubica muebles y habitaciones en la casa.
+                            </p>
+                        </div>
+                        <button onclick="switchTab('module1')" class="mt-6 w-full bg-slate-100 hover:bg-sky-600 hover:text-white text-slate-700 font-semibold py-2.5 rounded-xl transition flex items-center justify-center space-x-2">
+                            <span>Explorar Módulo</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                        <div>
+                            <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-circle-question"></i>
+                            </div>
+                            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Módulo 2</span>
+                            <h4 class="text-lg font-bold text-slate-900 mt-1 font-fun">Wh- Question Words</h4>
+                            <p class="text-slate-600 text-sm mt-2">
+                                Pregunta información usando What, Where, Who, When, Why, How.
+                            </p>
+                        </div>
+                        <button onclick="switchTab('module2')" class="mt-6 w-full bg-slate-100 hover:bg-amber-600 hover:text-white text-slate-700 font-semibold py-2.5 rounded-xl transition flex items-center justify-center space-x-2">
+                            <span>Explorar Módulo</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                        <div>
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Módulo 3</span>
+                            <h4 class="text-lg font-bold text-slate-900 mt-1 font-fun">Contables e Incontables</h4>
+                            <p class="text-slate-600 text-sm mt-2">
+                                Aprende a usar some, any, much, many, how much/many con alimentos.
+                            </p>
+                        </div>
+                        <button onclick="switchTab('module3')" class="mt-6 w-full bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-700 font-semibold py-2.5 rounded-xl transition flex items-center justify-center space-x-2">
+                            <span>Explorar Módulo</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-teal-50 to-emerald-50 rounded-2xl p-6 border-2 border-teal-200 shadow-sm hover:shadow-md transition flex flex-col justify-between group relative overflow-hidden">
+                        <div>
+                            <div class="w-12 h-12 bg-teal-600 text-white rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform shadow-md">
+                                <i class="fa-solid fa-book-open-reader"></i>
+                            </div>
+                            <span class="text-xs font-bold text-teal-700 uppercase tracking-wider">Lectura + 10 Preguntas</span>
+                            <h4 class="text-lg font-bold text-slate-900 mt-1 font-fun">A Day at Alex's House</h4>
+                            <p class="text-slate-600 text-sm mt-2">
+                                Lee el texto A1-A2 y responde 10 preguntas de comprensión lectora.
+                            </p>
+                        </div>
+                        <button onclick="switchTab('reading')" class="mt-6 w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-2.5 rounded-xl transition flex items-center justify-center space-x-2 shadow-sm">
+                            <span>Ir a Lectura</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 1 TAB -->
+        <section id="tab-module1" class="tab-content hidden space-y-8">
+            <div class="bg-sky-900 text-white p-6 sm:p-8 rounded-3xl shadow-lg relative overflow-hidden">
+                <div class="relative z-10 max-w-3xl">
+                    <span class="bg-sky-500/30 border border-sky-400/30 text-sky-200 text-xs font-bold px-3 py-1 rounded-full uppercase">Módulo 1</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold font-fun mt-2">Estructuras de Existencia: There is / There are</h2>
+                    <p class="mt-2 text-sky-200 text-sm sm:text-base">
+                        En inglés usamos <strong>"There is"</strong> para singular (hay una sola cosa) y <strong>"There are"</strong> para plural (hay varias cosas).
+                    </p>
+                </div>
+                <i class="fa-solid fa-bed absolute right-4 -bottom-4 text-9xl text-white/10 pointer-events-none"></i>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl border-2 border-sky-100 shadow-sm relative">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-lg">1</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 font-fun">There is (Singular)</h3>
+                            <p class="text-xs text-slate-500">Significa "Hay" (para un solo elemento u objeto)</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-sky-700">Afirmativo:</span>
+                                <span>There is a sofa in the living room.</span>
+                            </div>
+                            <button onclick="speakText('There is a sofa in the living room')" class="text-sky-600 hover:text-sky-800 p-1.5"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-rose-600">Negativo:</span>
+                                <span>There isn't a TV in the bedroom.</span>
+                            </div>
+                            <button onclick="speakText('There isn\'t a TV in the bedroom')" class="text-sky-600 hover:text-sky-800 p-1.5"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-amber-600">Pregunta:</span>
+                                <span>Is there a fridge in the kitchen?</span>
+                            </div>
+                            <button onclick="speakText('Is there a fridge in the kitchen?')" class="text-sky-600 hover:text-sky-800 p-1.5"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border-2 border-indigo-100 shadow-sm relative">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-lg">2</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 font-fun">There are (Plural)</h3>
+                            <p class="text-xs text-slate-500">Significa "Hay" (para dos o más elementos)</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-indigo-700">Afirmativo:</span>
+                                <span>There are four chairs in the dining room.</span>
+                            </div>
+                            <button onclick="speakText('There are four chairs in the dining room')" class="text-sky-600 hover:text-sky-800 p-1.5"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-rose-600">Negativo:</span>
+                                <span>There aren't any books on the table.</span>
+                            </div>
+                            <button onclick="speakText('There aren\'t any books on the table')" class="text-sky-600 hover:text-sky-800 p-1.5"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                        <li class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-amber-600">Pregunta:</span>
+                                <span>Are there three pillows on the bed?</span>
+                            </div>
+                            <button onclick="speakText('Are there three pillows on the bed?')" class="text-sky-600 hover:text-sky-800 p-1.5"><i class="fa-solid fa-volume-high"></i></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+                <h3 class="text-xl font-bold text-slate-900 font-fun mb-4 flex items-center">
+                    <i class="fa-solid fa-house-user text-sky-500 mr-2"></i>
+                    Vocabulario: Partes de la Casa y Muebles
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="house-vocab-grid"></div>
+            </div>
+        </section>
+
+        <!-- MODULE 2 TAB -->
+        <section id="tab-module2" class="tab-content hidden space-y-8">
+            <div class="bg-amber-800 text-white p-6 sm:p-8 rounded-3xl shadow-lg relative overflow-hidden">
+                <div class="relative z-10 max-w-3xl">
+                    <span class="bg-amber-500/30 border border-amber-400/30 text-amber-200 text-xs font-bold px-3 py-1 rounded-full uppercase">Módulo 2</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold font-fun mt-2">Palabras de Pregunta (Wh- Words)</h2>
+                    <p class="mt-2 text-amber-100 text-sm sm:text-base">
+                        Las <strong>Wh- Question Words</strong> nos permiten pedir información específica en inglés.
+                    </p>
+                </div>
+                <i class="fa-solid fa-circle-question absolute right-4 -bottom-4 text-9xl text-white/10 pointer-events-none"></i>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="wh-words-grid"></div>
+        </section>
+
+        <!-- MODULE 3 TAB -->
+        <section id="tab-module3" class="tab-content hidden space-y-8">
+            <div class="bg-emerald-900 text-white p-6 sm:p-8 rounded-3xl shadow-lg relative overflow-hidden">
+                <div class="relative z-10 max-w-3xl">
+                    <span class="bg-emerald-500/30 border border-emerald-400/30 text-emerald-200 text-xs font-bold px-3 py-1 rounded-full uppercase">Módulo 3</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold font-fun mt-2">Sustantivos Contables e Incontables</h2>
+                    <p class="mt-2 text-emerald-100 text-sm sm:text-base">
+                        Aprende la diferencia entre elementos contables (apples, burgers) e incontables (water, rice, money) y cómo usar <strong>Some, Any, Much, Many, How Much, How Many</strong>.
+                    </p>
+                </div>
+                <i class="fa-solid fa-apple-whole absolute right-4 -bottom-4 text-9xl text-white/10 pointer-events-none"></i>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-3 bg-emerald-100 text-emerald-600 rounded-2xl"><i class="fa-solid fa-carrot text-xl"></i></div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 font-fun">Sustantivos Contables (Countable Nouns)</h3>
+                            <p class="text-xs text-slate-500">Se pueden contar en unidades de 1, 2, 3...</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600">Tienen forma singular y plural (a banana / three bananas).</p>
+                    <div class="bg-emerald-50 p-4 rounded-2xl space-y-2 text-xs text-emerald-900 font-medium border border-emerald-100">
+                        <p><i class="fa-solid fa-check text-emerald-600 mr-2"></i>Usan <strong>How many?</strong> para preguntar cantidad: <em>How many apples are there?</em></p>
+                        <p><i class="fa-solid fa-check text-emerald-600 mr-2"></i>Usan <strong>many / a few</strong> en plurales.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-3 bg-cyan-100 text-cyan-600 rounded-2xl"><i class="fa-solid fa-bottle-water text-xl"></i></div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 font-fun">Sustantivos Incontables (Uncountable Nouns)</h3>
+                            <p class="text-xs text-slate-500">Líquidos, polvos, masa o conceptos abstractos</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600">No se pueden contar directamente ni tienen plural (*waters no existe).</p>
+                    <div class="bg-cyan-50 p-4 rounded-2xl space-y-2 text-xs text-cyan-900 font-medium border border-cyan-100">
+                        <p><i class="fa-solid fa-check text-cyan-600 mr-2"></i>Usan <strong>How much?</strong> para preguntar cantidad: <em>How much water is there?</em></p>
+                        <p><i class="fa-solid fa-check text-cyan-600 mr-2"></i>Usan verbos en singular (Water <strong>is</strong> cold).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- READING & GLOSSARY TAB -->
+        <section id="tab-reading" class="tab-content hidden space-y-8">
+            <div class="bg-gradient-to-r from-teal-700 via-emerald-700 to-teal-800 text-white p-6 sm:p-8 rounded-3xl shadow-lg relative overflow-hidden">
+                <div class="relative z-10 max-w-3xl">
+                    <span class="bg-teal-400/30 border border-teal-300/30 text-teal-100 text-xs font-bold px-3 py-1 rounded-full uppercase">Comprensión Lectora A1-A2</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold font-fun mt-2">Lectura Guiada + 10 Preguntas de Comprensión</h2>
+                    <p class="mt-2 text-teal-100 text-sm sm:text-base">
+                        Lee la historia en inglés, escucha la pronunciación y evalúa tu comprensión respondiendo las 10 preguntas interactivas.
+                    </p>
+                </div>
+                <i class="fa-solid fa-book-open-reader absolute right-4 -bottom-4 text-9xl text-white/10 pointer-events-none"></i>
+            </div>
+
+            <!-- Reading Section (4 Paragraphs) -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <h3 class="text-xl font-extrabold text-slate-900 font-fun flex items-center">
+                        <i class="fa-solid fa-feather-pointed text-teal-600 mr-2"></i>
+                        A Day at Alex's House (Un día en la casa de Alex)
+                    </h3>
+                    <button onclick="readFullStory()" class="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow transition flex items-center space-x-2">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Escuchar Lectura Completa</span>
+                    </button>
+                </div>
+
+                <!-- Paragraph 1 -->
+                <div class="p-5 bg-teal-50/50 rounded-2xl border border-teal-100 space-y-2 relative group hover:border-teal-300 transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-extrabold uppercase text-teal-700 tracking-wider bg-teal-100 px-2.5 py-0.5 rounded-md">Párrafo 1 • La Casa</span>
+                        <button onclick="speakText(document.getElementById('p1-text').innerText)" class="text-teal-600 hover:text-teal-800 p-1.5"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                    </div>
+                    <p id="p1-text" class="text-slate-800 font-medium leading-relaxed text-sm sm:text-base">
+                        Welcome to Alex’s cozy house in the suburbs! There is a comfortable living room with a large sofa and a bright lamp. In the kitchen, there are four wooden chairs around a round dining table, and there is a big white fridge near the window. Upstairs, there are three small bedrooms and a clean bathroom with a big mirror.
+                    </p>
+                </div>
+
+                <!-- Paragraph 2 -->
+                <div class="p-5 bg-amber-50/50 rounded-2xl border border-amber-100 space-y-2 relative group hover:border-amber-300 transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-extrabold uppercase text-amber-700 tracking-wider bg-amber-100 px-2.5 py-0.5 rounded-md">Párrafo 2 • Preguntas Diarias (Wh-)</span>
+                        <button onclick="speakText(document.getElementById('p2-text').innerText)" class="text-amber-600 hover:text-amber-800 p-1.5"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                    </div>
+                    <p id="p2-text" class="text-slate-800 font-medium leading-relaxed text-sm sm:text-base">
+                        Every Saturday morning, Alex asks his roommate: "What are we going to cook today?" and "Where is the recipe book?" They always wonder who will visit them for lunch. "When is Sam arriving?" asks Alex. His roommate replies: "He is coming at noon because he loves our homemade pasta!"
+                    </p>
+                </div>
+
+                <!-- Paragraph 3 -->
+                <div class="p-5 bg-emerald-50/50 rounded-2xl border border-emerald-100 space-y-2 relative group hover:border-emerald-300 transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-extrabold uppercase text-emerald-700 tracking-wider bg-emerald-100 px-2.5 py-0.5 rounded-md">Párrafo 3 • Comida (Contables e Incontables)</span>
+                        <button onclick="speakText(document.getElementById('p3-text').innerText)" class="text-emerald-600 hover:text-emerald-800 p-1.5"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                    </div>
+                    <p id="p3-text" class="text-slate-800 font-medium leading-relaxed text-sm sm:text-base">
+                        Before cooking, they check the fridge to see what ingredients they have. There is some milk, a little cheese, and some fresh orange juice, but there isn't any butter. Alex makes a quick list: they need two tomatoes, three apples, and some sugar for the dessert. Rice and pasta are uncountable, so they buy two packets instead.
+                    </p>
+                </div>
+
+                <!-- Paragraph 4 -->
+                <div class="p-5 bg-sky-50/50 rounded-2xl border border-sky-100 space-y-2 relative group hover:border-sky-300 transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-extrabold uppercase text-sky-700 tracking-wider bg-sky-100 px-2.5 py-0.5 rounded-md">Párrafo 4 • Preparando el Almuerzo</span>
+                        <button onclick="speakText(document.getElementById('p4-text').innerText)" class="text-sky-600 hover:text-sky-800 p-1.5"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                    </div>
+                    <p id="p4-text" class="text-slate-800 font-medium leading-relaxed text-sm sm:text-base">
+                        Now everything is ready on the kitchen table. Alex asks: "How much water do we need for the soup?" and "How many glasses are on the counter?" They prepare a delicious meal together in their warm home. Learning English grammar helps Alex describe his daily life with confidence!
+                    </p>
+                </div>
+            </div>
+
+            <!-- READING COMPREHENSION SECTION (10 QUESTIONS) -->
+            <div class="bg-gradient-to-br from-teal-50 via-white to-sky-50 rounded-3xl p-6 sm:p-8 border-2 border-teal-200 shadow-sm space-y-6">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-teal-100 pb-4">
+                    <div>
+                        <div class="inline-flex items-center space-x-1.5 bg-teal-100 text-teal-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider mb-1">
+                            <i class="fa-solid fa-list-check"></i>
+                            <span>Evaluación de Lectura</span>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 font-fun">10 Preguntas de Comprensión Lectora</h3>
+                        <p class="text-xs text-slate-500">Demuestra tu comprensión respondiendo estas preguntas sobre el texto anterior.</p>
+                    </div>
+                    <div class="bg-white border border-teal-200 px-4 py-2 rounded-2xl shadow-sm text-center">
+                        <span class="text-[10px] text-slate-400 font-bold uppercase block">Puntaje Lectura</span>
+                        <span id="reading-comp-score" class="text-xl font-extrabold text-teal-700 font-fun">0 / 10</span>
+                    </div>
+                </div>
+
+                <!-- 10 Reading Questions Container -->
+                <div id="reading-questions-container" class="space-y-6"></div>
+            </div>
+
+            <!-- GLOSSARY SECTION -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                    <div>
+                        <h3 class="text-xl font-extrabold text-slate-900 font-fun flex items-center">
+                            <i class="fa-solid fa-spell-check text-teal-600 mr-2"></i>
+                            Glosario de Vocabulario A1-A2
+                        </h3>
+                        <p class="text-xs text-slate-500">Palabras clave del texto con pronunciación y significado en contexto.</p>
+                    </div>
+                    <div class="relative w-full sm:w-64">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        <input type="text" id="glossary-search" onkeyup="filterGlossary()" placeholder="Buscar palabra..." class="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-teal-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="glossary-container"></div>
+            </div>
+        </section>
+
+        <!-- EXERCISES SECTION (50 VARIED QUESTIONS) -->
+        <section id="tab-exercises" class="tab-content hidden space-y-6">
+            <div class="bg-gradient-to-r from-sky-600 to-indigo-600 p-6 sm:p-8 rounded-3xl text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
+                <div>
+                    <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">idíoslinguas Práctica Multiformato</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold font-fun mt-2">50 Ejercicios Variados (A1-A2)</h2>
+                    <p class="text-sky-100 text-sm">Practica con 5 tipos de preguntas: Selección múltiple, Rellenar hueco, Verdadero/Falso, Detectar error y Ordenar palabras.</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="reshuffleExercises()" class="px-4 py-2.5 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white rounded-2xl border border-white/30 text-xs font-bold transition flex items-center space-x-2">
+                        <i class="fa-solid fa-shuffle"></i>
+                        <span>Mezclar Opciones y Orden</span>
+                    </button>
+                    <div class="bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/20 text-center min-w-[120px]">
+                        <span class="text-xs text-sky-100 font-semibold uppercase block">Progreso</span>
+                        <span id="ex-progress-text" class="text-2xl font-bold font-fun">1 / 50</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Interactive Card -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div class="flex items-center space-x-2">
+                        <span id="ex-category" class="px-3 py-1 bg-sky-50 text-sky-600 rounded-full text-xs font-bold uppercase">Módulo 1</span>
+                        <span id="ex-type-badge" class="px-3 py-1 bg-indigo-50 text-indigo-700 border border-indigo-100 rounded-full text-xs font-bold uppercase flex items-center space-x-1">
+                            <!-- Type icon & label rendered dynamically -->
+                        </span>
+                    </div>
+                    <span id="ex-counter" class="text-xs text-slate-400 font-semibold">Pregunta 1 de 50</span>
+                </div>
+
+                <div>
+                    <h3 id="ex-text" class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">Cargando pregunta...</h3>
+                    <p id="ex-trans" class="text-xs sm:text-sm text-slate-400 italic mt-1">Traducción...</p>
+                </div>
+
+                <!-- Dynamic Answer Box based on Question Type -->
+                <div id="ex-answers-container" class="space-y-3"></div>
+
+                <div id="ex-feedback" class="hidden p-4 rounded-2xl text-sm font-semibold transition-all"></div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                    <button id="btn-prev-ex" onclick="prevExercise()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 transition disabled:opacity-40">
+                        <i class="fa-solid fa-arrow-left mr-1.5"></i> Anterior
+                    </button>
+                    <button id="btn-next-ex" onclick="nextExercise()" class="px-5 py-2.5 rounded-xl bg-sky-600 text-white font-bold text-sm hover:bg-sky-700 transition">
+                        Siguiente <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Jump Grid -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+                <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+                    <h4 class="text-xs font-bold text-slate-500 uppercase">Mapa de Preguntas (1 - 50)</h4>
+                    <div class="flex items-center space-x-3 text-[10px] text-slate-500 font-semibold">
+                        <span class="flex items-center"><span class="w-2.5 h-2.5 bg-sky-500 rounded-full mr-1"></span> Selección</span>
+                        <span class="flex items-center"><span class="w-2.5 h-2.5 bg-emerald-500 rounded-full mr-1"></span> Completar</span>
+                        <span class="flex items-center"><span class="w-2.5 h-2.5 bg-amber-500 rounded-full mr-1"></span> Verd/Falso</span>
+                        <span class="flex items-center"><span class="w-2.5 h-2.5 bg-rose-500 rounded-full mr-1"></span> Error</span>
+                        <span class="flex items-center"><span class="w-2.5 h-2.5 bg-purple-500 rounded-full mr-1"></span> Ordenar</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-5 sm:grid-cols-10 gap-2" id="ex-dots-grid"></div>
+            </div>
+        </section>
+
+        <!-- SENTENCE BUILDER SECTION (20 TRANSLATION EXERCISES) -->
+        <section id="tab-builder" class="tab-content hidden space-y-6">
+            <div class="bg-gradient-to-r from-indigo-700 via-purple-700 to-indigo-800 p-6 sm:p-8 rounded-3xl text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden">
+                <div class="relative z-10">
+                    <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-star text-yellow-300"></i>
+                        <span>Paso a Nivel A2 • Traducción Interactiva</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold font-fun">Construye la Oración (20 Ejercicios)</h2>
+                    <p class="text-indigo-100 text-sm max-w-xl mt-1">
+                        Lee la frase en español y selecciona las palabras en el orden correcto en inglés.
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20 text-center min-w-[140px] z-10">
+                    <span class="text-xs text-indigo-200 font-bold uppercase block">Completados</span>
+                    <span id="sb-progress-counter" class="text-3xl font-extrabold font-fun text-yellow-300">1 / 20</span>
+                </div>
+                <i class="fa-solid fa-cubes-stacked absolute right-4 -bottom-6 text-9xl text-white/10 pointer-events-none"></i>
+            </div>
+
+            <!-- Sentence Builder Card -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border-2 border-indigo-100 shadow-md space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <span id="sb-badge" class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-extrabold uppercase tracking-wide">
+                        <i class="fa-solid fa-language mr-1"></i> Traducción Español ➔ Inglés
+                    </span>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="toggleSentenceHint()" class="text-amber-600 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Ver Pista</span>
+                        </button>
+                        <button onclick="speakTargetSentence()" class="text-indigo-600 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>Escuchar Audio</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl">
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Traduce esta oración al inglés:</span>
+                    <h3 id="sb-spanish-prompt" class="text-lg sm:text-xl font-extrabold text-slate-800 font-fun leading-relaxed">
+                        Cargando frase...
+                    </h3>
+                    <div id="sb-hint-box" class="hidden mt-3 p-3 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl text-xs font-medium italic">
+                        <i class="fa-solid fa-lightbulb text-amber-500 mr-1.5"></i>
+                        <span id="sb-hint-text">Pista...</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Tu oración construida:</span>
+                        <button onclick="clearSelectedWords()" class="text-xs text-rose-500 hover:text-rose-700 font-bold hover:underline flex items-center">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Reiniciar palabras
+                        </button>
+                    </div>
+                    <div id="sb-target-container" class="slot-box border-2 border-dashed border-indigo-200 rounded-2xl p-4 flex flex-wrap gap-2.5 items-center justify-start min-h-[80px] bg-indigo-50/20">
+                        <span id="sb-placeholder" class="text-xs text-slate-400 italic">Haz clic en las fichas de abajo para formar la oración en orden...</span>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-3">Banco de palabras disponibles:</span>
+                    <div id="sb-bank-container" class="flex flex-wrap gap-2.5 justify-start p-4 bg-slate-100/80 rounded-2xl border border-slate-200 min-h-[90px]">
+                    </div>
+                </div>
+
+                <div id="sb-feedback" class="hidden p-4 rounded-2xl text-sm font-semibold transition-all"></div>
+
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100">
+                    <button id="sb-btn-prev" onclick="prevSentence()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 transition disabled:opacity-40">
+                        <i class="fa-solid fa-arrow-left mr-1.5"></i> Anterior
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="checkSentenceAnswer()" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm rounded-xl shadow-md transition flex items-center space-x-2">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Comprobar Oración</span>
+                        </button>
+                        <button id="sb-btn-next" onclick="nextSentence()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-bold text-sm rounded-xl transition flex items-center space-x-1">
+                            <span>Siguiente</span>
+                            <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+                <h4 class="text-xs font-bold text-slate-500 uppercase mb-3">Progreso de las 20 Oraciones</h4>
+                <div class="grid grid-cols-5 sm:grid-cols-10 gap-2.5" id="sb-dots-grid"></div>
+            </div>
+        </section>
+
+        <!-- GAMES SECTION (FLASHCARDS) -->
+        <section id="tab-games" class="tab-content hidden space-y-8">
+            <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-6 sm:p-8 rounded-3xl text-white shadow-lg">
+                <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Práctica Divertida</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold font-fun mt-2">Tarjetas Interactivas (Flashcards)</h2>
+                <p class="text-purple-100 text-sm">Escucha, voltea las tarjetas y practica la pronunciación del vocabulario.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="flashcards-grid"></div>
+        </section>
+
+        <!-- QUIZ FINAL SECTION -->
+        <section id="tab-quiz" class="tab-content hidden space-y-8">
+            <div class="bg-gradient-to-r from-amber-500 to-rose-500 p-6 sm:p-8 rounded-3xl text-white shadow-lg text-center">
+                <i class="fa-solid fa-trophy text-5xl mb-2 text-yellow-200"></i>
+                <h2 class="text-2xl sm:text-3xl font-extrabold font-fun">Quiz Final - Certificación A1-A2</h2>
+                <p class="text-amber-100 text-sm max-w-xl mx-auto mt-1">Demuestra lo que has aprendido respondiendo las 10 preguntas finales seleccionadas de todos los temas.</p>
+            </div>
+
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm max-w-2xl mx-auto space-y-6">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <span class="font-bold text-slate-800 text-sm font-fun">Evaluación de Contenidos</span>
+                    <span id="quiz-score-badge" class="px-3 py-1 bg-amber-50 text-amber-600 rounded-full text-xs font-bold">Puntaje: 0 / 10</span>
+                </div>
+
+                <div id="quiz-questions-list" class="space-y-6"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p class="text-xs text-slate-500 font-medium">
+                © 2026 <strong class="text-[#16467d] font-fun">idíoslinguas • Academia de Idiomas</strong>. Todos los derechos reservados.
+            </p>
+            <p class="text-[11px] text-slate-400">
+                Curso de Inglés Interactivo A1-A2 • Diseñado para un aprendizaje rápido y eficiente.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const HOUSE_VOCAB = [
+            { word: "Kitchen", trans: "Cocina", icon: "fa-solid fa-kitchen-set" },
+            { word: "Bedroom", trans: "Dormitorio", icon: "fa-solid fa-bed" },
+            { word: "Living room", trans: "Sala de estar", icon: "fa-solid fa-couch" },
+            { word: "Bathroom", trans: "Baño", icon: "fa-solid fa-bath" },
+            { word: "Dining room", trans: "Comedor", icon: "fa-solid fa-utensils" },
+            { word: "Fridge", trans: "Nevera / Refrigerador", icon: "fa-solid fa-temperature-arrow-down" },
+            { word: "Sofa", trans: "Sofá", icon: "fa-solid fa-couch" },
+            { word: "Bed", trans: "Cama", icon: "fa-solid fa-bed" },
+            { word: "Table", trans: "Mesa", icon: "fa-solid fa-table" },
+            { word: "Chair", trans: "Silla", icon: "fa-solid fa-chair" },
+            { word: "Lamp", trans: "Lámpara", icon: "fa-solid fa-lightbulb" },
+            { word: "Mirror", trans: "Espejo", icon: "fa-solid fa-rug" }
+        ];
+
+        const WH_WORDS = [
+            { word: "What", trans: "Qué / Cuál", ex: "What is your name?", icon: "fa-solid fa-question" },
+            { word: "Where", trans: "Dónde", ex: "Where do you live?", icon: "fa-solid fa-location-dot" },
+            { word: "Who", trans: "Quién", ex: "Who is your teacher?", icon: "fa-solid fa-user" },
+            { word: "When", trans: "Cuándo", ex: "When is your birthday?", icon: "fa-solid fa-calendar-days" },
+            { word: "Why", trans: "Por qué", ex: "Why are you learning English?", icon: "fa-solid fa-brain" },
+            { word: "How", trans: "Cómo", ex: "How are you today?", icon: "fa-solid fa-handshake" },
+            { word: "How old", trans: "Cuántos años", ex: "How old are you?", icon: "fa-solid fa-cake-candles" }
+        ];
+
+        const GLOSSARY_TERMS = [
+            { word: "Cozy", pos: "adj.", trans: "Acogedor(a)", def: "Warm, comfortable, and pleasant.", ex: "They live in a cozy house." },
+            { word: "Suburbs", pos: "noun", trans: "Suburbios / Afueras", def: "An area where people live outside the center of a city.", ex: "Alex lives in the suburbs." },
+            { word: "Fridge", pos: "noun", trans: "Nevera / Refrigerador", def: "A cold cabinet used for keeping food fresh.", ex: "The milk is in the fridge." },
+            { word: "Roommate", pos: "noun", trans: "Compañero de cuarto", def: "A person who shares a room or apartment with you.", ex: "Alex talks to his roommate." },
+            { word: "Recipe", pos: "noun", trans: "Receta", def: "Instructions for cooking a specific dish.", ex: "Where is the recipe book?" },
+            { word: "Noon", pos: "noun", trans: "Mediodía (12:00 PM)", def: "12 o'clock in the middle of the day.", ex: "He is arriving at noon." },
+            { word: "Homemade", pos: "adj.", trans: "Casero / Hecho en casa", def: "Made at home rather than in a store or factory.", ex: "They love homemade pasta." },
+            { word: "Ingredients", pos: "noun", trans: "Ingredientes", def: "Foods combined to make a dish.", ex: "We need fresh ingredients." },
+            { word: "Butter", pos: "noun", trans: "Mantequilla", def: "A soft yellow food made from cream (uncountable).", ex: "There isn't any butter." },
+            { word: "Dessert", pos: "noun", trans: "Postre", def: "Sweet food eaten at the end of a meal.", ex: "They bought apples for dessert." },
+            { word: "Uncountable", pos: "adj.", trans: "Incontable", def: "Nouns that cannot be counted with numbers.", ex: "Rice and water are uncountable." },
+            { word: "Packet", pos: "noun", trans: "Paquete", def: "A small container or box of goods.", ex: "They bought two packets of pasta." },
+            { word: "Counter", pos: "noun", trans: "Mostrador / Mesón", def: "A flat surface in a kitchen.", ex: "The glasses are on the counter." },
+            { word: "Delicious", pos: "adj.", trans: "Delicioso(a)", def: "Having a very pleasant taste.", ex: "The soup is delicious!" },
+            { word: "Confidence", pos: "noun", trans: "Confianza / Seguridad", def: "A feeling of belief in one's abilities.", ex: "Speak English with confidence." }
+        ];
+
+        const READING_QUESTIONS = [
+            {
+                q: "1. Where is Alex's house located?",
+                trans: "¿Dónde está ubicada la casa de Alex?",
+                opts: ["In the city center", "In the suburbs", "Near a beach", "In the mountains"],
+                ans: 1,
+                exp: "En el Párrafo 1 se menciona: 'Welcome to Alex’s cozy house in the suburbs!'"
+            },
+            {
+                q: "2. How many chairs are in the kitchen?",
+                trans: "¿Cuántas sillas hay en la cocina?",
+                opts: ["Two plastic chairs", "Three metal chairs", "Four wooden chairs", "Six cushions"],
+                ans: 2,
+                exp: "En el Párrafo 1 se especifica: 'there are four wooden chairs around a round dining table'."
+            },
+            {
+                q: "3. What do Alex and his roommate ask every Saturday morning?",
+                trans: "¿Qué se preguntan Alex y su compañero cada sábado por la mañana?",
+                opts: [
+                    "\"What are we going to cook today?\" and \"Where is the recipe book?\"",
+                    "\"Where are we going to travel?\" and \"Who is driving?\"",
+                    "\"When is the party?\" and \"What time is it?\"",
+                    "\"Why is the kitchen dirty?\" and \"Who bought the milk?\""
+                ],
+                ans: 0,
+                exp: "Párrafo 2: 'Every Saturday morning, Alex asks his roommate: \"What are we going to cook today?\" and \"Where is the recipe book?\"'"
+            },
+            {
+                q: "4. Why is Sam visiting them at noon?",
+                trans: "¿Por qué los visita Sam al mediodía?",
+                opts: [
+                    "Because he wants to borrow a book",
+                    "Because he loves their homemade pasta",
+                    "Because he needs help with English homework",
+                    "Because he lives next door"
+                ],
+                ans: 1,
+                exp: "Párrafo 2: 'He is coming at noon because he loves our homemade pasta!'"
+            },
+            {
+                q: "5. What item is NOT in the fridge before they cook?",
+                trans: "¿Qué ingrediente NO está en la nevera antes de cocinar?",
+                opts: ["Milk", "Orange juice", "Butter", "Cheese"],
+                ans: 2,
+                exp: "Párrafo 3: 'There is some milk, a little cheese, and some fresh orange juice, but there isn't any butter.'"
+            },
+            {
+                q: "6. Why do they buy two packets of rice and pasta?",
+                trans: "¿Por qué compran dos paquetes de arroz y pasta?",
+                opts: [
+                    "Because rice and pasta are uncountable nouns",
+                    "Because they are very cheap",
+                    "Because the store was closing",
+                    "Because Sam loves rice"
+                ],
+                ans: 0,
+                exp: "Párrafo 3: 'Rice and pasta are uncountable, so they buy two packets instead.'"
+            },
+            {
+                q: "7. How many bedrooms are upstairs in the house?",
+                trans: "¿Cuántos dormitorios hay en el piso superior?",
+                opts: ["Two big bedrooms", "Three small bedrooms", "One bedroom", "Four bedrooms"],
+                ans: 1,
+                exp: "Párrafo 1: 'Upstairs, there are three small bedrooms...'"
+            },
+            {
+                q: "8. What fruit juice do they have in the fridge?",
+                trans: "¿Qué jugo de fruta tienen en la nevera?",
+                opts: ["Apple juice", "Grape juice", "Fresh orange juice", "Pineapple juice"],
+                ans: 2,
+                exp: "Párrafo 3: '...and some fresh orange juice...'"
+            },
+            {
+                q: "9. What question does Alex ask about the glasses in Paragraph 4?",
+                trans: "¿Qué pregunta hace Alex sobre los vasos en el Párrafo 4?",
+                opts: [
+                    "\"Where are the clean glasses?\"",
+                    "\"How many glasses are on the counter?\"",
+                    "\"Who broke the glasses?\"",
+                    "\"Are there any blue glasses?\""
+                ],
+                ans: 1,
+                exp: "Párrafo 4: Alex pregunta: '\"How many glasses are on the counter?\"'"
+            },
+            {
+                q: "10. What helps Alex describe his daily life with confidence?",
+                trans: "¿Qué le ayuda a Alex a describir su vida diaria con confianza?",
+                opts: [
+                    "Cooking every single day",
+                    "Learning English grammar",
+                    "Buying new furniture",
+                    "Inviting friends for dinner"
+                ],
+                ans: 1,
+                exp: "Párrafo 4: 'Learning English grammar helps Alex describe his daily life with confidence!'"
+            }
+        ];
+
+        const EXERCISES = [
+            // FORMAT 1: Multiple Choice
+            { type: "multiple_choice", cat: "Módulo 1", text: "_____ a sofa in the living room.", trans: "Hay un sofá en la sala de estar.", opts: ["Is there", "There is", "There are"], ans: 1, exp: "'A sofa' es singular, usamos 'There is'." },
+            { type: "multiple_choice", cat: "Módulo 1", text: "_____ four chairs in the dining room.", trans: "Hay cuatro sillas en el comedor.", opts: ["There is", "There aren't", "There are"], ans: 2, exp: "'Four chairs' es plural, usamos 'There are'." },
+            { type: "multiple_choice", cat: "Módulo 2", text: "_____ is your favorite singer?", trans: "¿Quién es tu cantante favorito?", opts: ["What", "Who", "Where"], ans: 1, exp: "Usamos 'Who' para preguntar por personas." },
+            { type: "multiple_choice", cat: "Módulo 3", text: "How _____ water do you drink every day?", trans: "¿Cuánta agua bebes cada día?", opts: ["many", "much", "some"], ans: 1, exp: "Water es incontable, usamos 'How much'." },
+            { type: "multiple_choice", cat: "Módulo 3", text: "How _____ apples are in the basket?", trans: "¿Cuántas manzanas hay en la canasta?", opts: ["much", "any", "many"], ans: 2, exp: "Apples es contable plural, usamos 'How many'." },
+
+            // FORMAT 2: Fill in the Blank
+            { type: "fill_blank", cat: "Módulo 1", text: "Is _____ a microwave on the kitchen table?", trans: "¿Hay un microondas en la mesa de la cocina?", opts: ["there", "here", "it"], ans: 0, exp: "La pregunta de existencia singular es 'Is there...?'." },
+            { type: "fill_blank", cat: "Módulo 1", text: "There _____ any books on the desk.", trans: "No hay ningún libro en el escritorio.", opts: ["isn't", "aren't", "not"], ans: 1, exp: "'Books' está en plural con 'any', la respuesta correcta es 'aren't'." },
+            { type: "fill_blank", cat: "Módulo 2", text: "_____ do you live? - I live in Madrid.", trans: "¿Dónde vives? - Vivo en Madrid.", opts: ["Where", "When", "Why"], ans: 0, exp: "Para preguntar por ubicación usamos 'Where'." },
+            { type: "fill_blank", cat: "Módulo 2", text: "_____ old are you? - I am 20 years old.", trans: "¿Cuántos años tienes? - Tengo 20 años.", opts: ["What", "How", "When"], ans: 1, exp: "La expresión para edad es 'How old'." },
+            { type: "fill_blank", cat: "Módulo 3", text: "We need _____ sugar for the tea.", trans: "Necesitamos algo de azúcar para el té.", opts: ["any", "some", "many"], ans: 1, exp: "Oración afirmativa con sustantivo incontable usa 'some'." },
+            { type: "fill_blank", cat: "Módulo 3", text: "There isn't _____ cheese left in the fridge.", trans: "No queda nada de queso en la nevera.", opts: ["any", "some", "many"], ans: 0, exp: "En oraciones negativas se utiliza 'any'." },
+
+            // FORMAT 3: True or False
+            { type: "true_false", cat: "Módulo 1", text: "\"There are a big mirror in the bathroom.\" ¿Es gramaticalmente correcta esta oración?", trans: "Afirmación: Usar 'There are' con 'a big mirror'.", opts: ["Verdadero", "Falso"], ans: 1, exp: "Falso. 'A big mirror' es singular, por lo que debe decir 'There is a big mirror'." },
+            { type: "true_false", cat: "Módulo 3", text: "\"Money\" es un sustantivo incontable en inglés y no se puede decir \"three moneys\".", trans: "Regla de incontables: 'Money'", opts: ["Verdadero", "Falso"], ans: 0, exp: "Verdadero. 'Money' es incontable; para contar se usan billetes o monedas (coins, bills)." },
+            { type: "true_false", cat: "Módulo 2", text: "Usamos la palabra \"When\" para preguntar por el motivo o razón de algo.", trans: "Uso de palabras Wh-", opts: ["Verdadero", "Falso"], ans: 1, exp: "Falso. Usamos 'Why' para la razón ('Por qué') y 'When' para el tiempo ('Cuándo')." },
+            { type: "true_false", cat: "Módulo 3", text: "Decir \"How much tomatoes do you want?\" es gramaticalmente correcto.", trans: "Cuantificadores", opts: ["Verdadero", "Falso"], ans: 1, exp: "Falso. 'Tomatoes' es contable plural, debe decir 'How many tomatoes'." },
+            { type: "true_false", cat: "Módulo 1", text: "Para formular una pregunta en plural con 'There are', invertimos el orden a 'Are there...?'", trans: "Estructura interrogativa", opts: ["Verdadero", "Falso"], ans: 0, exp: "Verdadero. En preguntas invertimos el verbo: 'Are there three chairs?'." },
+
+            // FORMAT 4: Spot the Error
+            { type: "find_error", cat: "Módulo 1", text: "Identifica la palabra INCORRECTA: \"There [are] a yellow lamp on the table.\"", trans: "Encuentra el error gramatical.", opts: ["yellow", "are", "on"], ans: 1, exp: "El error es 'are'. Como habla de 'a yellow lamp' (singular), debe usarse 'is'." },
+            { type: "find_error", cat: "Módulo 2", text: "Identifica la palabra INCORRECTA: \"[Who] is your school located?\"", trans: "Encuentra el error en la Wh- word.", opts: ["Who", "is", "located"], ans: 0, exp: "El error es 'Who' (quién). Como pregunta por un lugar, debe usarse 'Where'." },
+            { type: "find_error", cat: "Módulo 3", text: "Identifica la palabra INCORRECTA: \"How [many] water do you need for the soup?\"", trans: "Encuentra el error de cuantificador.", opts: ["water", "many", "need"], ans: 1, exp: "El error es 'many'. 'Water' es incontable, así que debe usarse 'much'." },
+            { type: "find_error", cat: "Módulo 1", text: "Identifica la palabra INCORRECTA: \"Are there [a] fridge in the kitchen?\"", trans: "Encuentra el error en la pregunta.", opts: ["Are", "a", "in"], ans: 0, exp: "El error es 'Are'. Con 'a fridge' (singular) la pregunta debe empezar con 'Is there'." },
+            { type: "find_error", cat: "Módulo 3", text: "Identifica la palabra INCORRECTA: \"There aren't [some] apples in the bowl.\"", trans: "Encuentra el error de determinante.", opts: ["aren't", "some", "in"], ans: 1, exp: "El error es 'some'. En oraciones negativas debemos usar 'any'." },
+
+            // FORMAT 5: Sentence Unscramble
+            { type: "unscramble", cat: "Módulo 1", text: "Ordena las palabras para formar una oración correcta:", trans: "Hay tres cojines en el sofá.", opts: ["Three pillows there are on the sofa.", "There are three pillows on the sofa.", "On the sofa are there three pillows."], ans: 1, exp: "La estructura correcta es: There + are + cantidad/sustantivo + complemento de lugar." },
+            { type: "unscramble", cat: "Módulo 2", text: "Ordena las palabras para formar la pregunta adecuada:", trans: "¿Por qué estás estudiando inglés?", opts: ["Why are you studying English?", "You are studying why English?", "Why English you are studying?"], ans: 0, exp: "Estructura de pregunta Wh-: Wh- word + auxiliar (are) + sujeto (you) + verbo (-ing)." },
+            { type: "unscramble", cat: "Módulo 3", text: "Ordena las palabras para la pregunta de cantidad:", trans: "¿Cuánta leche hay en la botella?", opts: ["How many milk there is in bottle?", "How much milk is there in the bottle?", "Milk how much is there in bottle?"], ans: 1, exp: "How much + incontable (milk) + is there + complemento." },
+
+            // ADDITIONAL MIXED QUESTIONS (23-50) TO COMPLETE 50 EXERCISES
+            { type: "multiple_choice", cat: "Módulo 1", text: "_____ two beds in the bedroom.", trans: "Hay dos camas en el dormitorio.", opts: ["There is", "There are", "Is there"], ans: 1, exp: "'Two beds' es plural -> 'There are'." },
+            { type: "multiple_choice", cat: "Módulo 1", text: "_____ a mirror in the bathroom?", trans: "¿Hay un espejo en el baño?", opts: ["Are there", "There is", "Is there"], ans: 2, exp: "Pregunta en singular -> 'Is there'." },
+            { type: "multiple_choice", cat: "Módulo 1", text: "There _____ a TV in my bedroom.", trans: "No hay un televisor en mi habitación.", opts: ["aren't", "isn't", "is"], ans: 1, exp: "Singular negativo -> 'There isn't'." },
+            { type: "multiple_choice", cat: "Módulo 1", text: "How many lamps _____ in the room?", trans: "¿Cuántas lámparas hay en la habitación?", opts: ["is there", "are there", "there are"], ans: 1, exp: "Pregunta en plural -> 'are there'." },
+            { type: "fill_blank", cat: "Módulo 1", text: "There is _____ apple on the table.", trans: "Hay una manzana sobre la mesa.", opts: ["an", "a", "some"], ans: 0, exp: "'Apple' empieza por vocal, usamos 'an'." },
+            { type: "fill_blank", cat: "Módulo 1", text: "_____ a big garden behind the house?", trans: "¿Hay un jardín grande detrás de la casa?", opts: ["Are there", "Is there", "There is"], ans: 1, exp: "Pregunta singular -> 'Is there'." },
+            { type: "true_false", cat: "Módulo 1", text: "\"There isn't any chairs in the dining room.\" ¿Es correcta esta frase?", trans: "Evaluación gramatical", opts: ["Verdadero", "Falso"], ans: 1, exp: "Falso. 'Chairs' es plural, debe decir 'There aren't any chairs'." },
+            { type: "find_error", cat: "Módulo 2", text: "Identifica la palabra INCORRECTA: \"[When] is your best friend? - His name is Mark.\"", trans: "Encuentra el error de Wh- word.", opts: ["When", "is", "friend"], ans: 0, exp: "El error es 'When' (cuándo). Como pregunta por una persona, debe usar 'Who'." },
+            { type: "multiple_choice", cat: "Módulo 2", text: "_____ is your English exam?", trans: "¿Cuándo es tu examen de inglés?", opts: ["Who", "When", "What"], ans: 1, exp: "Usamos 'When' para fechas o tiempo." },
+            { type: "multiple_choice", cat: "Módulo 2", text: "_____ are you studying today?", trans: "¿Por qué estás estudiando hoy?", opts: ["Why", "Where", "Who"], ans: 0, exp: "Usamos 'Why' para preguntar razones." },
+            { type: "fill_blank", cat: "Módulo 2", text: "_____ is your name?", trans: "¿Cuál es tu nombre?", opts: ["Where", "What", "Who"], ans: 1, exp: "'What' para preguntar información general." },
+            { type: "true_false", cat: "Módulo 2", text: "Usamos \"How many\" para preguntar el precio de una prenda de vestir.", trans: "Preguntas de costo", opts: ["Verdadero", "Falso"], ans: 1, exp: "Falso. Para preguntar precios usamos 'How much' (e.g., How much is this shirt?)." },
+            { type: "multiple_choice", cat: "Módulo 2", text: "_____ color is your car?", trans: "¿De qué color es tu auto?", opts: ["Which", "What", "Where"], ans: 1, exp: "'What color' especifica el color." },
+            { type: "fill_blank", cat: "Módulo 2", text: "_____ are you crying? - Because I lost my keys.", trans: "¿Por qué estás llorando?", opts: ["Why", "Who", "When"], ans: 0, exp: "Causa o motivo -> 'Why'." },
+            { type: "unscramble", cat: "Módulo 2", text: "Ordena las palabras para preguntar la hora:", trans: "¿Qué hora es?", opts: ["Is it what time?", "What time is it?", "Time what is it?"], ans: 1, exp: "La estructura fija en inglés es 'What time is it?'." },
+            { type: "multiple_choice", cat: "Módulo 3", text: "I would like _____ milk, please.", trans: "Me gustaría un poco de leche, por favor.", opts: ["any", "some", "many"], ans: 1, exp: "Oración afirmativa con incontable -> 'some'." },
+            { type: "fill_blank", cat: "Módulo 3", text: "Are there _____ oranges on the tree?", trans: "¿Hay alguna naranja en el árbol?", opts: ["any", "some", "much"], ans: 0, exp: "Pregunta en plural -> 'any'." },
+            { type: "true_false", cat: "Módulo 3", text: "Los sustantivos incontables como 'rice' o 'water' pueden llevar la letra 's' al final para hacer plurales.", trans: "Regla de incontables", opts: ["Verdadero", "Falso"], ans: 1, exp: "Falso. Los sustantivos incontables no tienen forma plural (*rices, *waters no existen)." },
+            { type: "multiple_choice", cat: "Módulo 3", text: "We need _____ eggs to bake the cake.", trans: "Necesitamos algunos huevos para hornear el pastel.", opts: ["much", "some", "any"], ans: 1, exp: "Afirmativa con contable plural -> 'some'." },
+            { type: "fill_blank", cat: "Módulo 3", text: "She doesn't have _____ time today.", trans: "Ella no tiene mucho tiempo hoy.", opts: ["much", "many", "a"], ans: 0, exp: "'Time' es incontable, en oraciones negativas usa 'much'." },
+            { type: "find_error", cat: "Módulo 3", text: "Identifica la palabra INCORRECTA: \"How [many] butter is in the kitchen?\"", trans: "Encuentra el error.", opts: ["butter", "many", "in"], ans: 1, exp: "'Butter' (mantequilla) es incontable, debe usarse 'How much'." },
+            { type: "multiple_choice", cat: "Módulo 3", text: "There is _____ rice on the plate.", trans: "Hay algo de arroz en el plato.", opts: ["many", "some", "a"], ans: 1, exp: "Incontable afirmativo -> 'some'." },
+            { type: "unscramble", cat: "Módulo 3", text: "Ordena la frase afirmativa con contables:", trans: "Hay algunas manzanas rojas en la canasta.", opts: ["There are some red apples in the basket.", "Some red apples there are in the basket.", "In the basket are some red apples."], ans: 0, exp: "There are + some + adjetivo + sustantivo plural + lugar." },
+            { type: "multiple_choice", cat: "Módulo 3", text: "How _____ coffee do you drink in the morning?", trans: "¿Cuánto café tomas por la mañana?", opts: ["much", "many", "a"], ans: 0, exp: "Coffee es incontable -> 'How much'." },
+            { type: "fill_blank", cat: "Módulo 3", text: "There are _____ tomatoes in the garden.", trans: "Hay algunos tomates en el jardín.", opts: ["much", "some", "any"], ans: 1, exp: "Plural contable afirmativo -> 'some'." },
+            { type: "true_false", cat: "Módulo 3", text: "La palabra \"an\" se usa antes de sustantivos singulares que empiezan con sonido consonante.", trans: "Artículos a/an", opts: ["Verdadero", "Falso"], ans: 1, exp: "Falso. 'An' se usa con sonido de vocal (an apple), mientras que 'a' se usa con consonante (a book)." },
+            { type: "multiple_choice", cat: "Módulo 3", text: "How _____ students are in your classroom?", trans: "¿Cuántos estudiantes hay en tu salón?", opts: ["much", "many", "some"], ans: 1, exp: "Students es contable plural -> 'How many'." },
+            { type: "multiple_choice", cat: "Módulo 3", text: "I have _____ banana for my snack.", trans: "Tengo una banana para mi merienda.", opts: ["a", "an", "some"], ans: 0, exp: "Singular contable con consonante -> 'a'." }
+        ];
+
+        const SENTENCE_EXERCISES = [
+            {
+                spanish: "Hay tres libros interesantes sobre la mesa de la cocina.",
+                target: "There are three interesting books on the kitchen table.",
+                distractors: ["is", "chairs", "at"],
+                hint: "Empieza con la estructura de existencia 'There are...' (plural)."
+            },
+            {
+                spanish: "¿Por qué hay tanto queso en el refrigerador?",
+                target: "Why is there so much cheese in the fridge?",
+                distractors: ["many", "are", "where"],
+                hint: "Usa la palabra 'Why', seguida de 'is there' y 'so much' para incontables."
+            },
+            {
+                spanish: "Alex no tiene mucho tiempo para cocinar hoy.",
+                target: "Alex does not have much time to cook today.",
+                distractors: ["many", "is", "some"],
+                hint: "'Time' es incontable, por lo que usamos 'much time'."
+            },
+            {
+                spanish: "¿Cuántas manzanas necesitas para hacer este pastel?",
+                target: "How many apples do you need to make this cake?",
+                distractors: ["much", "are", "there"],
+                hint: "Para manzanas (contable plural) usamos 'How many apples...'."
+            },
+            {
+                spanish: "Hay un sofá muy cómodo en nuestra sala de estar.",
+                target: "There is a very comfortable sofa in our living room.",
+                distractors: ["are", "on", "at"],
+                hint: "Singular afirmativo: 'There is a...'."
+            },
+            {
+                spanish: "¿Dónde está la llave de la puerta principal?",
+                target: "Where is the key to the front door?",
+                distractors: ["are", "what", "on"],
+                hint: "Pregunta por lugar con 'Where is...'."
+            },
+            {
+                spanish: "No hay nada de leche en la jarra de cristal.",
+                target: "There is not any milk in the glass jug.",
+                distractors: ["are", "some", "many"],
+                hint: "En oraciones negativas con incontables se usa 'not any milk'."
+            },
+            {
+                spanish: "¿A qué hora llega Sam para el almuerzo?",
+                target: "What time does Sam arrive for lunch?",
+                distractors: ["when", "is", "doing"],
+                hint: "'What time' + auxiliar 'does' + sujeto."
+            },
+            {
+                spanish: "Ella compra algunos tomates y un poco de azúcar.",
+                target: "She buys some tomatoes and a little sugar.",
+                distractors: ["any", "many", "buy"],
+                hint: "'Some' para contables en afirmativo y 'a little' para incontables."
+            },
+            {
+                spanish: "¿Quién va a preparar la cena esta noche?",
+                target: "Who is going to prepare dinner tonight?",
+                distractors: ["where", "are", "cooks"],
+                hint: "Pregunta por persona con 'Who is going to...'."
+            },
+            {
+                spanish: "Hay dos baños grandes en el segundo piso.",
+                target: "There are two big bathrooms on the second floor.",
+                distractors: ["is", "in", "at"],
+                hint: "Para pisos de un edificio usamos la preposición 'on'."
+            },
+            {
+                spanish: "¿Cuánta agua debemos beber durante la tarde?",
+                target: "How much water should we drink during the afternoon?",
+                distractors: ["many", "are", "at"],
+                hint: "Water es incontable -> 'How much water...'."
+            },
+            {
+                spanish: "No podemos hacer la sopa porque no hay mantequilla.",
+                target: "We cannot make the soup because there is no butter.",
+                distractors: ["why", "are", "many"],
+                hint: "Usa el conector 'because' (porque) y 'there is no butter'."
+            },
+            {
+                spanish: "¿Cuándo vas a limpiar tu dormitorio desordenado?",
+                target: "When are you going to clean your messy bedroom?",
+                distractors: ["why", "is", "cleans"],
+                hint: "'When' + 'are you going to...'."
+            },
+            {
+                spanish: "Hay muchas sillas de madera alrededor de la mesa.",
+                target: "There are many wooden chairs around the table.",
+                distractors: ["is", "much", "on"],
+                hint: "'Many' se usa con sustantivos contables plurales como 'chairs'."
+            },
+            {
+                spanish: "¿Por qué no hay ningún libro en la estantería?",
+                target: "Why are there not any books on the bookshelf?",
+                distractors: ["is", "much", "who"],
+                hint: "Estructura de pregunta negativa: 'Why are there not any...'."
+            },
+            {
+                spanish: "Alex vive en una casa acogedora cerca del parque.",
+                target: "Alex lives in a cozy house near the park.",
+                distractors: ["live", "on", "at"],
+                hint: "Tercera persona singular 'lives' + adjetivo 'cozy house'."
+            },
+            {
+                spanish: "Queremos preparar una ensalada deliciosa con frutas frescas.",
+                target: "We want to prepare a delicious salad with fresh fruit.",
+                distractors: ["wants", "for", "the"],
+                hint: "Verbo infinitivo: 'want to prepare...'."
+            },
+            {
+                spanish: "¿Cuántos estudiantes hay en la clase de inglés?",
+                target: "How many students are there in the English class?",
+                distractors: ["much", "is", "where"],
+                hint: "Pregunta con 'How many students are there...'."
+            },
+            {
+                spanish: "No hay suficiente dinero para comprar ese espejo.",
+                target: "There is not enough money to buy that mirror.",
+                distractors: ["are", "many", "these"],
+                hint: "'Enough money' (suficiente dinero) con verbo singular."
+            }
+        ];
+
+        let readingCompAnswers = new Array(10).fill(null);
+        
+        let currentExerciseIdx = 0;
+        let completedExercises = new Set();
+        
+        let currentSentenceIdx = 0;
+        let selectedWordObjects = [];
+        let currentBankWords = [];
+        let completedSentences = new Set();
+
+        let quizAnswers = new Array(10).fill(null);
+        let quizItems = [];
+
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // Shuffles question options while ensuring the correct answer index ('ans') is properly updated
+        function randomizeQuestionOptions(item) {
+            if (!item || !item.opts || item.opts.length <= 1) return;
+            const correctAnswerText = item.opts[item.ans];
+            const shuffled = shuffleArray(item.opts);
+            item.opts = shuffled;
+            item.ans = shuffled.indexOf(correctAnswerText);
+        }
+
+        function randomizeAllQuestionSets() {
+            EXERCISES.forEach(item => randomizeQuestionOptions(item));
+            READING_QUESTIONS.forEach(item => randomizeQuestionOptions(item));
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const rate = parseFloat(document.getElementById('voice-speed').value) || 1.0;
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = rate;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function readFullStory() {
+            const p1 = document.getElementById('p1-text').innerText;
+            const p2 = document.getElementById('p2-text').innerText;
+            const p3 = document.getElementById('p3-text').innerText;
+            const p4 = document.getElementById('p4-text').innerText;
+            speakText(`${p1} ... ${p2} ... ${p3} ... ${p4}`);
+        }
+
+        function playAudioFeedback(isCorrect) {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (isCorrect) {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(659.25, ctx.currentTime + 0.15);
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.3);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(180, ctx.currentTime);
+                    osc.frequency.linearRampToValueAtTime(110, ctx.currentTime + 0.2);
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch(e) {}
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(sec => sec.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active', 'text-sky-600', 'bg-sky-50', 'text-indigo-600', 'bg-indigo-50');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeSec = document.getElementById(`tab-${tabId}`);
+            if (activeSec) activeSec.classList.remove('hidden');
+
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) {
+                if (tabId === 'builder') {
+                    activeBtn.classList.add('active', 'text-indigo-600', 'bg-indigo-50');
+                } else {
+                    activeBtn.classList.add('active', 'text-sky-600', 'bg-sky-50');
+                }
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            updateGlobalProgress();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function renderHouseVocab() {
+            const grid = document.getElementById('house-vocab-grid');
+            if (!grid) return;
+            grid.innerHTML = HOUSE_VOCAB.map(item => `
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center space-y-2 card-bounce group hover:border-sky-300 transition cursor-pointer" onclick="speakText('${item.word}')">
+                    <div class="w-10 h-10 mx-auto bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center text-lg group-hover:bg-sky-600 group-hover:text-white transition">
+                        <i class="${item.icon}"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm font-fun">${item.word}</h4>
+                        <p class="text-xs text-slate-500">${item.trans}</p>
+                    </div>
+                    <button class="text-[10px] text-sky-600 font-bold hover:underline flex items-center justify-center mx-auto">
+                        <i class="fa-solid fa-volume-high mr-1"></i> Pronunciar
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function renderWhWords() {
+            const grid = document.getElementById('wh-words-grid');
+            if (!grid) return;
+            grid.innerHTML = WH_WORDS.map(item => `
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3 card-bounce">
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-black text-amber-600 font-fun">${item.word}</span>
+                        <div class="p-2.5 bg-amber-50 text-amber-600 rounded-xl"><i class="${item.icon}"></i></div>
+                    </div>
+                    <p class="text-xs font-bold text-slate-500 uppercase">${item.trans}</p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs flex items-center justify-between">
+                        <span class="text-slate-700 italic">"${item.ex}"</span>
+                        <button onclick="speakText('${item.ex}')" class="text-amber-600 hover:text-amber-800 p-1"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderGlossary(terms = GLOSSARY_TERMS) {
+            const container = document.getElementById('glossary-container');
+            if (!container) return;
+            container.innerHTML = terms.map(t => `
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 glossary-card space-y-2">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="font-bold text-slate-900 text-base font-fun">${t.word}</span>
+                            <span class="text-[10px] bg-teal-100 text-teal-800 font-bold px-1.5 py-0.5 rounded ml-1">${t.pos}</span>
+                        </div>
+                        <button onclick="speakText('${t.word}')" class="text-teal-600 hover:text-teal-800 p-1"><i class="fa-solid fa-volume-high text-sm"></i></button>
+                    </div>
+                    <p class="text-xs font-bold text-teal-700">${t.trans}</p>
+                    <p class="text-[11px] text-slate-500 leading-tight">${t.def}</p>
+                    <p class="text-[11px] text-slate-600 italic bg-white p-2 rounded-xl border border-slate-100">"${t.ex}"</p>
+                </div>
+            `).join('');
+        }
+
+        function filterGlossary() {
+            const query = document.getElementById('glossary-search').value.toLowerCase();
+            const filtered = GLOSSARY_TERMS.filter(t => 
+                t.word.toLowerCase().includes(query) || 
+                t.trans.toLowerCase().includes(query)
+            );
+            renderGlossary(filtered);
+        }
+
+        function renderReadingQuestions() {
+            const container = document.getElementById('reading-questions-container');
+            if (!container) return;
+
+            container.innerHTML = READING_QUESTIONS.map((item, qIdx) => `
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-teal-100 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-extrabold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full uppercase">Pregunta ${qIdx + 1}</span>
+                        <button onclick="speakText('${item.q.replace(/'/g, "\\'")}')" class="text-teal-600 hover:text-teal-800 text-xs font-bold flex items-center">
+                            <i class="fa-solid fa-volume-high mr-1"></i> Escuchar
+                        </button>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-base">${item.q}</h4>
+                        <p class="text-xs text-slate-400 italic">${item.trans}</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                        ${item.opts.map((opt, optIdx) => {
+                            const isChosen = readingCompAnswers[qIdx] === optIdx;
+                            const isCorrect = optIdx === item.ans;
+                            let btnStyle = "bg-slate-50 border-slate-200 text-slate-700 hover:bg-teal-50 hover:border-teal-300";
+                            if (readingCompAnswers[qIdx] !== null) {
+                                if (isChosen) {
+                                    btnStyle = isCorrect 
+                                        ? "bg-emerald-100 border-emerald-400 text-emerald-900 font-bold" 
+                                        : "bg-rose-100 border-rose-400 text-rose-900 font-bold";
+                                } else if (isCorrect) {
+                                    btnStyle = "bg-emerald-50 border-emerald-300 text-emerald-800 font-bold";
+                                } else {
+                                    btnStyle = "bg-slate-50 border-slate-100 text-slate-400 opacity-60";
+                                }
+                            }
+                            return `
+                                <button onclick="checkReadingAnswer(${qIdx}, ${optIdx})" ${readingCompAnswers[qIdx] !== null ? 'disabled' : ''} class="w-full text-left p-3 rounded-xl border ${btnStyle} transition text-xs flex items-center justify-between">
+                                    <span>${opt}</span>
+                                    ${readingCompAnswers[qIdx] !== null && isChosen ? (isCorrect ? '<i class="fa-solid fa-circle-check text-emerald-600"></i>' : '<i class="fa-solid fa-circle-xmark text-rose-600"></i>') : ''}
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                    ${readingCompAnswers[qIdx] !== null ? `
+                        <div class="mt-2 p-3 bg-teal-50 border border-teal-200 rounded-xl text-xs text-teal-900 font-medium">
+                            <i class="fa-solid fa-circle-info text-teal-600 mr-1.5"></i>
+                            <span>${item.exp}</span>
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('');
+
+            updateReadingScore();
+        }
+
+        function checkReadingAnswer(qIdx, optIdx) {
+            readingCompAnswers[qIdx] = optIdx;
+            const isCorrect = optIdx === READING_QUESTIONS[qIdx].ans;
+            playAudioFeedback(isCorrect);
+            renderReadingQuestions();
+        }
+
+        function updateReadingScore() {
+            let correctCount = 0;
+            readingCompAnswers.forEach((ans, idx) => {
+                if (ans === READING_QUESTIONS[idx].ans) correctCount++;
+            });
+            const scoreElem = document.getElementById('reading-comp-score');
+            if (scoreElem) scoreElem.innerText = `${correctCount} / 10`;
+            const dashElem = document.getElementById('dash-reading-score');
+            if (dashElem) dashElem.innerText = `${correctCount} / 10`;
+            updateGlobalProgress();
+        }
+
+        function getExerciseTypeMeta(type) {
+            switch(type) {
+                case 'multiple_choice':
+                    return { label: 'Selección Múltiple', icon: 'fa-solid fa-list-ul', color: 'bg-sky-500' };
+                case 'fill_blank':
+                    return { label: 'Completar Hueco', icon: 'fa-solid fa-pen', color: 'bg-emerald-500' };
+                case 'true_false':
+                    return { label: 'Verdadero o Falso', icon: 'fa-solid fa-toggle-on', color: 'bg-amber-500' };
+                case 'find_error':
+                    return { label: 'Detectar Error', icon: 'fa-solid fa-bug', color: 'bg-rose-500' };
+                case 'unscramble':
+                    return { label: 'Ordenar Oración', icon: 'fa-solid fa-arrow-down-short-wide', color: 'bg-purple-500' };
+                default:
+                    return { label: 'Ejercicio', icon: 'fa-solid fa-pen-to-square', color: 'bg-sky-500' };
+            }
+        }
+
+        function renderExercise() {
+            const ex = EXERCISES[currentExerciseIdx];
+            if (!ex) return;
+
+            document.getElementById('ex-counter').innerText = `Pregunta ${currentExerciseIdx + 1} de 50`;
+            document.getElementById('ex-progress-text').innerText = `${currentExerciseIdx + 1} / 50`;
+            document.getElementById('ex-category').innerText = ex.cat;
+
+            const meta = getExerciseTypeMeta(ex.type);
+            const badge = document.getElementById('ex-type-badge');
+            badge.innerHTML = `<i class="${meta.icon} mr-1"></i> ${meta.label}`;
+
+            document.getElementById('ex-text').innerText = ex.text;
+            document.getElementById('ex-trans').innerText = ex.trans;
+
+            const answersBox = document.getElementById('ex-answers-container');
+            const feedbackBox = document.getElementById('ex-feedback');
+            feedbackBox.classList.add('hidden');
+
+            answersBox.innerHTML = `
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    ${ex.opts.map((opt, idx) => `
+                        <button onclick="checkExerciseAnswer(${idx})" class="w-full text-left p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-sky-50 hover:border-sky-300 transition text-sm font-semibold text-slate-800 flex items-center justify-between group">
+                            <span>${opt}</span>
+                            <i class="fa-regular fa-circle text-slate-300 group-hover:text-sky-500 transition"></i>
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+
+            document.getElementById('btn-prev-ex').disabled = currentExerciseIdx === 0;
+            renderDotsGrid();
+        }
+
+        function checkExerciseAnswer(selectedOptIdx) {
+            const ex = EXERCISES[currentExerciseIdx];
+            const isCorrect = selectedOptIdx === ex.ans;
+            playAudioFeedback(isCorrect);
+
+            const feedbackBox = document.getElementById('ex-feedback');
+            feedbackBox.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-900', 'border-emerald-200', 'bg-rose-50', 'text-rose-900', 'border-rose-200');
+
+            if (isCorrect) {
+                completedExercises.add(currentExerciseIdx);
+                feedbackBox.classList.add('bg-emerald-50', 'text-emerald-900', 'border', 'border-emerald-200');
+                feedbackBox.innerHTML = `
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-xl mt-0.5"></i>
+                        <div>
+                            <p class="font-bold">¡Excelente! Respuesta Correcta.</p>
+                            <p class="text-xs mt-1 text-emerald-800 font-normal">${ex.exp}</p>
+                        </div>
+                    </div>
+                `;
+                if (completedExercises.size === EXERCISES.length) {
+                    confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                }
+            } else {
+                feedbackBox.classList.add('bg-rose-50', 'text-rose-900', 'border', 'border-rose-200');
+                feedbackBox.innerHTML = `
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-circle-xmark text-rose-600 text-xl mt-0.5"></i>
+                        <div>
+                            <p class="font-bold">Incorrecto. La opción correcta es: "${ex.opts[ex.ans]}"</p>
+                            <p class="text-xs mt-1 text-rose-800 font-normal">${ex.exp}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            document.getElementById('dash-exercises-score').innerText = `${completedExercises.size} / 50`;
+            renderDotsGrid();
+            updateGlobalProgress();
+        }
+
+        function prevExercise() {
+            if (currentExerciseIdx > 0) {
+                currentExerciseIdx--;
+                renderExercise();
+            }
+        }
+
+        function nextExercise() {
+            if (currentExerciseIdx < EXERCISES.length - 1) {
+                currentExerciseIdx++;
+                renderExercise();
+            } else {
+                switchTab('builder');
+            }
+        }
+
+        function jumpToExercise(idx) {
+            currentExerciseIdx = idx;
+            renderExercise();
+        }
+
+        function reshuffleExercises() {
+            // Re-randomize option positions for all exercise items
+            EXERCISES.forEach(item => randomizeQuestionOptions(item));
+            renderExercise();
+        }
+
+        function renderDotsGrid() {
+            const grid = document.getElementById('ex-dots-grid');
+            if (!grid) return;
+            grid.innerHTML = EXERCISES.map((ex, idx) => {
+                const meta = getExerciseTypeMeta(ex.type);
+                const isCurrent = idx === currentExerciseIdx;
+                const isDone = completedExercises.has(idx);
+
+                let bgStyle = isDone ? "bg-emerald-500 text-white" : "bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200";
+                if (isCurrent) bgStyle += " ring-2 ring-sky-500 font-black";
+
+                return `
+                    <button onclick="jumpToExercise(${idx})" class="h-8 rounded-lg text-xs font-bold transition flex items-center justify-center ${bgStyle}">
+                        ${idx + 1}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function initSentenceBuilder() {
+            renderSentenceBuilder();
+        }
+
+        function renderSentenceBuilder() {
+            const ex = SENTENCE_EXERCISES[currentSentenceIdx];
+            if (!ex) return;
+
+            document.getElementById('sb-progress-counter').innerText = `${completedSentences.size} / 20`;
+            document.getElementById('sb-spanish-prompt').innerText = ex.spanish;
+            document.getElementById('sb-hint-text').innerText = ex.hint;
+            document.getElementById('sb-hint-box').classList.add('hidden');
+            document.getElementById('sb-feedback').classList.add('hidden');
+
+            // Reset word selection logic
+            selectedWordObjects = [];
+            const cleanTargetWords = ex.target.replace(/[.,?!]/g, '').split(' ');
+            const allWords = [...cleanTargetWords, ...ex.distractors];
+            const shuffledWords = shuffleArray(allWords);
+
+            currentBankWords = shuffledWords.map((w, idx) => ({ id: `w_${idx}_${w}`, word: w, used: false }));
+
+            renderSentenceSlots();
+            renderSentenceBank();
+
+            document.getElementById('sb-btn-prev').disabled = currentSentenceIdx === 0;
+            renderSentenceDotsGrid();
+        }
+
+        function renderSentenceSlots() {
+            const container = document.getElementById('sb-target-container');
+            if (selectedWordObjects.length === 0) {
+                container.innerHTML = `<span id="sb-placeholder" class="text-xs text-slate-400 italic">Haz clic en las fichas de abajo para formar la oración en orden...</span>`;
+                return;
+            }
+
+            container.innerHTML = selectedWordObjects.map(obj => `
+                <button onclick="removeSelectedWord('${obj.id}')" class="word-chip bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow-sm flex items-center space-x-1.5 transition">
+                    <span>${obj.word}</span>
+                    <i class="fa-solid fa-xmark text-[10px] text-indigo-200"></i>
+                </button>
+            `).join('');
+        }
+
+        function renderSentenceBank() {
+            const container = document.getElementById('sb-bank-container');
+            container.innerHTML = currentBankWords.map(obj => {
+                if (obj.used) {
+                    return `<div class="opacity-30 border-2 border-dashed border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-transparent select-none">${obj.word}</div>`;
+                }
+                return `
+                    <button onclick="selectBankWord('${obj.id}')" class="word-chip bg-white hover:bg-indigo-50 border border-slate-200 hover:border-indigo-300 text-slate-800 font-bold text-xs px-3 py-2 rounded-xl shadow-sm transition">
+                        ${obj.word}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function selectBankWord(wordId) {
+            const bankItem = currentBankWords.find(b => b.id === wordId);
+            if (bankItem && !bankItem.used) {
+                bankItem.used = true;
+                selectedWordObjects.push(bankItem);
+                renderSentenceSlots();
+                renderSentenceBank();
+            }
+        }
+
+        function removeSelectedWord(wordId) {
+            selectedWordObjects = selectedWordObjects.filter(obj => obj.id !== wordId);
+            const bankItem = currentBankWords.find(b => b.id === wordId);
+            if (bankItem) bankItem.used = false;
+            renderSentenceSlots();
+            renderSentenceBank();
+        }
+
+        function clearSelectedWords() {
+            selectedWordObjects = [];
+            currentBankWords.forEach(b => b.used = false);
+            renderSentenceSlots();
+            renderSentenceBank();
+        }
+
+        function toggleSentenceHint() {
+            const hintBox = document.getElementById('sb-hint-box');
+            hintBox.classList.toggle('hidden');
+        }
+
+        function speakTargetSentence() {
+            const ex = SENTENCE_EXERCISES[currentSentenceIdx];
+            if (ex) speakText(ex.target);
+        }
+
+        function checkSentenceAnswer() {
+            const ex = SENTENCE_EXERCISES[currentSentenceIdx];
+            const builtSentence = selectedWordObjects.map(o => o.word).join(' ').trim();
+            const cleanTarget = ex.target.replace(/[.,?!]/g, '').trim();
+
+            const feedbackBox = document.getElementById('sb-feedback');
+            feedbackBox.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-900', 'border-emerald-200', 'bg-rose-50', 'text-rose-900', 'border-rose-200');
+
+            if (builtSentence.toLowerCase() === cleanTarget.toLowerCase()) {
+                completedSentences.add(currentSentenceIdx);
+                playAudioFeedback(true);
+                feedbackBox.classList.add('bg-emerald-50', 'text-emerald-900', 'border', 'border-emerald-200');
+                feedbackBox.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-2xl"></i>
+                        <div>
+                            <p class="font-extrabold text-base">¡Traducción Perfecta!</p>
+                            <p class="text-xs mt-0.5 text-emerald-800">Oración: "${ex.target}"</p>
+                        </div>
+                    </div>
+                `;
+                speakText(ex.target);
+                if (completedSentences.size === SENTENCE_EXERCISES.length) {
+                    confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+                }
+            } else {
+                playAudioFeedback(false);
+                feedbackBox.classList.add('bg-rose-50', 'text-rose-900', 'border', 'border-rose-200');
+                feedbackBox.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-circle-xmark text-rose-600 text-2xl"></i>
+                        <div>
+                            <p class="font-extrabold text-base">La oración no coincide.</p>
+                            <p class="text-xs mt-0.5 text-rose-800">Respuesta correcta: "<strong>${ex.target}</strong>"</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            document.getElementById('dash-builder-score').innerText = `${completedSentences.size} / 20`;
+            renderSentenceDotsGrid();
+            updateGlobalProgress();
+        }
+
+        function prevSentence() {
+            if (currentSentenceIdx > 0) {
+                currentSentenceIdx--;
+                renderSentenceBuilder();
+            }
+        }
+
+        function nextSentence() {
+            if (currentSentenceIdx < SENTENCE_EXERCISES.length - 1) {
+                currentSentenceIdx++;
+                renderSentenceBuilder();
+            } else {
+                switchTab('games');
+            }
+        }
+
+        function jumpToSentence(idx) {
+            currentSentenceIdx = idx;
+            renderSentenceBuilder();
+        }
+
+        function renderSentenceDotsGrid() {
+            const grid = document.getElementById('sb-dots-grid');
+            if (!grid) return;
+            grid.innerHTML = SENTENCE_EXERCISES.map((_, idx) => {
+                const isCurrent = idx === currentSentenceIdx;
+                const isDone = completedSentences.has(idx);
+
+                let bgStyle = isDone ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200";
+                if (isCurrent) bgStyle += " ring-2 ring-amber-400 font-black";
+
+                return `
+                    <button onclick="jumpToSentence(${idx})" class="h-9 rounded-xl text-xs font-bold transition flex items-center justify-center ${bgStyle}">
+                        ${idx + 1}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function renderFlashcards() {
+            const container = document.getElementById('flashcards-grid');
+            if (!container) return;
+
+            const cardsData = [...HOUSE_VOCAB, ...GLOSSARY_TERMS.slice(0, 8)];
+
+            container.innerHTML = cardsData.map((item, idx) => `
+                <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner relative w-full h-full shadow-sm rounded-2xl border border-slate-200">
+                        <div class="flip-card-front absolute inset-0 bg-white rounded-2xl p-6 flex flex-col items-center justify-center text-center space-y-2">
+                            <i class="${item.icon || 'fa-solid fa-language'} text-3xl text-purple-600"></i>
+                            <h4 class="text-xl font-extrabold text-slate-900 font-fun">${item.word}</h4>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-widest">Toca para voltear</span>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-gradient-to-br from-purple-600 to-indigo-700 text-white rounded-2xl p-6 flex flex-col items-center justify-center text-center space-y-2">
+                            <h4 class="text-lg font-bold font-fun">${item.trans}</h4>
+                            <p class="text-xs text-purple-100 italic">${item.def || item.ex || ''}</p>
+                            <button onclick="event.stopPropagation(); speakText('${item.word}')" class="mt-2 bg-white/20 hover:bg-white/30 text-white font-bold text-xs px-3 py-1.5 rounded-xl transition flex items-center space-x-1">
+                                <i class="fa-solid fa-volume-high"></i>
+                                <span>Escuchar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function initQuiz() {
+            // Select 10 diverse questions from EXERCISES and shuffle their options
+            const shuffledPool = shuffleArray([...EXERCISES]);
+            quizItems = shuffledPool.slice(0, 10).map(q => {
+                const itemCopy = JSON.parse(JSON.stringify(q));
+                randomizeQuestionOptions(itemCopy);
+                return itemCopy;
+            });
+            quizAnswers = new Array(10).fill(null);
+            renderQuiz();
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-questions-list');
+            if (!container) return;
+
+            container.innerHTML = quizItems.map((item, qIdx) => `
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3">
+                    <span class="text-xs font-bold text-amber-600 uppercase">Pregunta ${qIdx + 1} de 10</span>
+                    <h4 class="font-bold text-slate-900 text-base">${item.text}</h4>
+                    <p class="text-xs text-slate-400 italic">${item.trans}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                        ${item.opts.map((opt, optIdx) => {
+                            const isChosen = quizAnswers[qIdx] === optIdx;
+                            return `
+                                <button onclick="checkQuizAnswer(${qIdx}, ${optIdx})" class="w-full text-left p-3 rounded-xl border ${isChosen ? 'bg-amber-500 text-white border-amber-600 font-bold' : 'bg-white text-slate-700 border-slate-200 hover:bg-amber-50'} transition text-xs">
+                                    ${opt}
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            updateQuizScore();
+        }
+
+        function checkQuizAnswer(qIdx, optIdx) {
+            quizAnswers[qIdx] = optIdx;
+            renderQuiz();
+        }
+
+        function updateQuizScore() {
+            let correctCount = 0;
+            quizAnswers.forEach((ans, idx) => {
+                if (ans !== null && quizItems[idx] && ans === quizItems[idx].ans) {
+                    correctCount++;
+                }
+            });
+            document.getElementById('quiz-score-badge').innerText = `Puntaje: ${correctCount} / 10`;
+            if (quizAnswers.every(a => a !== null) && correctCount >= 8) {
+                confetti({ particleCount: 150, spread: 90, origin: { y: 0.5 } });
+            }
+        }
+
+        function updateGlobalProgress() {
+            const totalTasks = 10 + 50 + 20; // Reading (10), Exercises (50), Sentence Builder (20)
+            let completed = 0;
+
+            // Count answered reading questions
+            readingCompAnswers.forEach(ans => { if (ans !== null) completed++; });
+            completed += completedExercises.size;
+            completed += completedSentences.size;
+
+            const percentage = Math.round((completed / totalTasks) * 100);
+            const progressBar = document.getElementById('global-progress');
+            if (progressBar) progressBar.style.width = `${percentage}%`;
+
+            const dashText = document.getElementById('dash-progress-text');
+            if (dashText) dashText.innerText = `${percentage}%`;
+        }
+
+        window.onload = function() {
+            randomizeAllQuestionSets();
+            renderHouseVocab();
+            renderWhWords();
+            renderGlossary();
+            renderReadingQuestions();
+            renderExercise();
+            initSentenceBuilder();
+            renderFlashcards();
+            initQuiz();
+            updateGlobalProgress();
+        };
+    </script>
+</body>
+</html>
